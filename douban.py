@@ -2,7 +2,6 @@ import requests
 import json
 import time
 import pandas as pd
-import time
 
 
 headers = {'User-agent':  
