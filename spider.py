@@ -34,7 +34,7 @@ def run():
 
 def main():
     scheduler = BlockingScheduler()
-    scheduler.add_job(run, 'interval', seconds=args["time"],id='spider_job')
+    scheduler.add_job(run, 'interval', seconds=args["time"]*3600,id='spider_job')
     scheduler.start()
 
 if __name__ == '__main__':
