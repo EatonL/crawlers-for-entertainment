@@ -11,8 +11,8 @@ ap.add_argument("-s", "--spider", type=str, default="renren",
 	help="select a particular spider")
 ap.add_argument("-t", "--time", type=float, default=24,
 	help="determin a run cycle")
-ap.add_argument("-w", "--word", type=str, default=None,
-	help="secret word for searching")   
+#ap.add_argument("-w", "--word", type=str, default=None,
+	#help="secret word for searching")   
 args = vars(ap.parse_args())
 
 spider_list = os.listdir(os.getcwd())
@@ -24,11 +24,11 @@ def run():
         os.system("python renren.py")
     elif args["spider"]=="steam":
         os.system("python steam.py")
-    elif args["spider"]=="baidu_img":
-        os.system("python baidu_img.py -w {}".format(args["word"]))
+    #elif args["spider"]=="baidu_img":
+        #os.system("python baidu_img.py -w {}".format(args["word"]))
     elif args["spider"]=="all":
         for c in spider_list:
-            if os.path.isfile(c) and c.endswith('.py') and c.find("spider")== -1 and c.find("baidu_img") == -1: 
+            if os.path.isfile(c) and c.endswith('.py') and c.find("spider")== -1: #and c.find("baidu_img") == -1: 
                 os.system('python {}'.format(c))
         
 
