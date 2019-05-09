@@ -2,16 +2,6 @@ import urllib.request
 import urllib.parse
 import re
 import os
-import importlib
-import sys
-import argparse
-
-ap = argparse.ArgumentParser()
-ap.add_argument("-w", "--word", type=str, default=None,
-	help="secret word for searching")
-args = vars(ap.parse_args())
-
-importlib.reload(sys)
 
 header=\
 {
@@ -19,7 +9,7 @@ header=\
      "referer":"https://image.baidu.com"
     }
 
-keyword=args["word"]
+keyword=input("请输入搜索关键词：")
 keyword=urllib.parse.quote(keyword,"utf-8")
 n=0
 j=0
