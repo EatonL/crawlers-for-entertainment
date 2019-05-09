@@ -7,7 +7,7 @@
 ## 使用方法
 
 ```
-python spider.py -s "name" -t "time" (-w "secret word")
+python spider.py -s "name" -t "time" 
 ```
 
 
@@ -15,10 +15,8 @@ python spider.py -s "name" -t "time" (-w "secret word")
 
 **time:** 爬虫的运行周期，单位是小时，默认24小时
 
-**secret word:** 百度图片爬虫的搜索关键词，除了使用baidu_img时不用填。
-
 所需模块：
-urlib、re、os、impolib、sys、argparse、requests、json、time、pandas、beautifulsoup、apsheduler
+~~urlib~~、re、os、~~impolib~~、~~sys~~、argparse、requests、json、time、pandas、beautifulsoup、~~apsheduler~~
 
 所需环境：
 python3.7, windows（linux系统还未测试，应该不会有什么大问题）
@@ -44,7 +42,7 @@ python3.7, windows（linux系统还未测试，应该不会有什么大问题）
 To do:
 
 - 完成音乐榜单、赛事资讯爬取
-- 统一各爬虫风格
+- ~~统一各爬虫风格~~
 - 重构定时功能（放弃apsheduler，自己写一个），采用线程分配
 - 打包成exe程序，或者写个小网页显示
 - 异常时采用代理IP或者cookies（豆瓣会阻止异常IP访问）
