@@ -16,7 +16,7 @@ python spider.py -s "name" -t "time"
 **time:** 爬虫的运行周期，单位是小时，默认24小时
 
 所需模块：
-~~urlib~~、re、os、~~impolib~~、~~sys~~、argparse、requests、json、time、pandas、beautifulsoup、~~apsheduler~~
+~~urlib~~、re、os、~~impolib~~、~~sys~~、argparse、requests、json、time、pandas、beautifulsoup、~~apsheduler~~、schedule
 
 所需环境：
 python3.7, windows（linux系统还未测试，应该不会有什么大问题）
@@ -43,11 +43,15 @@ To do:
 
 - 完成音乐榜单、赛事资讯爬取
 - ~~统一各爬虫风格~~
-- 重构定时功能（放弃apsheduler，自己写一个），采用线程分配
+- ~~重构定时功能（放弃apsheduler，自己写一个），采用线程分配~~
 - 打包成exe程序，或者写个小网页显示
 - 异常时采用代理IP或者cookies（豆瓣会阻止异常IP访问）
-- 采用类的调用，不使用os.system调用各爬虫
-- 写一个跨模块变量共享模块，方便存各模块参数，args传参太蠢了
+- ~~采用类的调用，不使用os.system调用各爬虫~~
+
+后续工作：
+- 没有自己写一个定时功能，因为发现时间好像不太准，而且schedule是轻量模块
+- 没有测试是多进程、多线程、多协程哪个更快，目前还是多线程
+- 代码风格统一了，但还是有个异性，暂时没法重复调用同一方法
 
 
 **后记：** 一方面由于入手爬虫时间不长，另一方面一直也是写写停停，到最后才决定汇总，所以问题挺多，包括：各个爬虫风格乱，request 和 urlib 都在用；有的模块封装了，有的模块还没封装；定时功能图省事用了现成模块，感觉更费事，而且不是多线程......导致最后主文件只能用 os.system 调用其他模块，而且调用模块太多，不方便打包，很不 pythonic 。不过万事开头难，后面我会按计划慢慢补上。
