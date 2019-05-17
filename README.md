@@ -39,6 +39,8 @@ python3.7, windows（linux系统还未测试，应该不会有什么大问题）
 
 [https://store.steampowered.com(优惠)](https://store.steampowered.com/search/?os=win&specials=1&page=1)
 
+[https://music.163.com/#/discover/toplist](https://music.163.com/#/discover/toplist)
+
 To do:
 
 - 完成~~音乐榜单、~~体育赛事资讯爬取
