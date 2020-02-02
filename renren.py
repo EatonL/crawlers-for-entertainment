@@ -6,18 +6,18 @@ import time
 
 class renren(object):
     def __init__(self,url):
-        self.url=url
-        self.headers = {'User-agent':  
+        self._url=url
+        self._headers = {'User-agent':  
                       'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:57.0) Gecko/20100101 Firefox/57.0'}
-        self.top24_title=[]
-        self.top24_href=[]
-        self.todayplay_title=[]
-        self.todayplay_href=[]
+        self._top24Title=[]
+        self._top24Href=[]
+        self._todayplayTitle=[]
+        self._todayplayHref=[]
 
     def get_article_url(self):  
         s = requests.session() 
         s.keep_alive = False
-        response = s.get(self.url, headers=self.headers)
+        response = s.get(self._url, headers=self._headers)
         response.encoding = response.apparent_encoding
         response=response.text
 
@@ -30,7 +30,7 @@ class renren(object):
         data = str(data)
         pattern1 = re.compile(r'<a\b[^>]+\bhref="([^"]*)"[^>]*>',re.M)
         pattern2 = re.compile(r'<a\b[^>]+\btitle="([^"]*)"[^>]*>',re.M)
-        data_href = [self.url[:-1]+x for x in pattern1.findall(data)]
+        data_href = [self._url[:-1]+x for x in pattern1.findall(data)]
         data_title = pattern2.findall(data)
 
         for x in range(len(data_href)-1,-1,-1):
@@ -43,31 +43,31 @@ class renren(object):
     
     def run(self):
         top24,todayPlay = self.get_article_url()
-        self.top24_href,self.top24_title = self.clean_data(top24)
-        del self.top24_href[0]
-        self.todayplay_href, self.todayplay_title = self.clean_data(todayPlay)        
+        self._top24Href,self._top24Title = self.clean_data(top24)
+        del self._top24Href[0]
+        self._todayplayHref, self._todayplayTitle = self.clean_data(todayPlay)        
 
     def extract(self):
         self.run()
         ticks = [time.time()]
         ticks = list(ticks)
 
-        max_length = len(self.top24_title) if len(self.top24_title)>len(self.todayplay_title) else len(self.todayplay_title)
+        max_length = len(self._top24Title) if len(self._top24Title)>len(self._todayplayTitle) else len(self._todayplayTitle)
 
-        self.top24_title.extend([""]*(max_length-len(self.top24_title)))
-        self.top24_href.extend([""]*(max_length-len(self.top24_href)))
-        self.todayplay_title.extend([""]*(max_length-len(self.todayplay_title)))
-        self.todayplay_href.extend([""]*(max_length-len(self.todayplay_href)))
+        self._top24Title.extend([""]*(max_length-len(self._top24Title)))
+        self._top24Href.extend([""]*(max_length-len(self._top24Href)))
+        self._todayplayTitle.extend([""]*(max_length-len(self._todayplayTitle)))
+        self._todayplayHref.extend([""]*(max_length-len(self._todayplayHref)))
         ticks.extend([""]*(max_length-len(ticks)))
 
-        test = pd.DataFrame({'time':ticks,'top24_title':self.top24_title,'top24_href':self.top24_href,'todayplay_title':self.todayplay_title,'today_href':self.todayplay_href})
+        test = pd.DataFrame({'time':ticks,'top24_title':self._top24Title,'top24_href':self._top24Href,'todayplay_title':self._todayplayTitle,'today_href':self._todayplayHref})
         print(test)
         path = './renren_'+str(ticks[0])+'.csv'
         test.to_csv(path,encoding='utf-8-sig',index=False)
 
 
 def main():
-    data=renren("http://www.zmz2019.com/")
+    data=renren("http://www.rrys2019.com/")
     data.extract()
 
 if __name__ == '__main__':
