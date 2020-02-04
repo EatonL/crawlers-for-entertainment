@@ -41,6 +41,8 @@ python3.7, windows（linux系统还未测试，应该不会有什么大问题）
 
 [https://music.163.com/#/discover/toplist](https://music.163.com/#/discover/toplist)
 
+[https://www.bilibili.com/ranking/all/0/0/1](https://www.bilibili.com/ranking/all/0/0/1)
+
 To do:
 
 - ~~完成音乐榜单爬取~~
