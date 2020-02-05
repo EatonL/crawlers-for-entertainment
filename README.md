@@ -11,7 +11,7 @@ python spider.py -s "name" -t "time"
 ```
 
 
-**name:** 选用的爬虫名称，目前包括 baidu_img、renren、douban、steam、163music、all（all是除了baidu_img的其他所有爬虫）
+**name:** 选用的爬虫名称，目前包括 baidu_img、renren、douban、steam、163music、bilbili、all（all是除了baidu_img的其他所有爬虫）
 
 **time:** 爬虫的运行周期，单位是小时，默认24小时
 
