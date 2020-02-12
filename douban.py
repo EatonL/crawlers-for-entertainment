@@ -53,7 +53,7 @@ class douban(object):
 
 def main():
     data=douban("https://movie.douban.com/j/search_subjects?type=movie&tag=热门&sort=recommend&page_limit=20&page_start=")
-    data.extract()
+    filePath=data.extract()
 
 if __name__ == '__main__':
     main()   
