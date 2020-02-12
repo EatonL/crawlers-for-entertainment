@@ -67,13 +67,14 @@ class steam(object):
         print(test)
         path = './'+self._fileName+str(ticks[0])+'.csv'
         test.to_csv(path,encoding='utf-8-sig',index=False)
+        return path
 
 def main():
     data=steam("https://store.steampowered.com/search/?filter=globaltopsellers&page=",'steam_topseller_',discount=False)
-    data.extract()
+    filePath1=data.extract()
     
     data=steam("https://store.steampowered.com/search/?os=win&specials=1&page=",'steam_specials_',discount=True)
-    data.extract()
+    filePath2=data.extract()
 
 if __name__ == '__main__':
     main()
