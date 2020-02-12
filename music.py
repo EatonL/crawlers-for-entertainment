@@ -36,19 +36,20 @@ class music(object):
         print(test)
         path = './163music_'+self.file_name+str(ticks[0]).replace(':','-')+'.csv'
         test.to_csv(path,encoding='utf-8-sig',index=False)
+        return path
 
 
 def main():
     data=music("http://music.163.com/api/playlist/detail?id=2884035",'网易原创歌曲榜')
-    data.extract()
+    filePath1=data.extract()
     
     data=music("http://music.163.com/api/playlist/detail?id=19723756",'云音乐飙升榜')
-    data.extract()
+    filePath2=data.extract()
     
     data=music("http://music.163.com/api/playlist/detail?id=3778678",'云音乐热歌榜')
-    data.extract()
+    filePath3=data.extract()
 
     data=music("http://music.163.com/api/playlist/detail?id=3779629",'云音乐新歌榜')
-    data.extract()    
+    filePath4=data.extract()    
 if __name__ == '__main__':
     main()
