@@ -15,9 +15,7 @@ class douban(object):
                       'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:57.0) Gecko/20100101 Firefox/57.0','Connection':'close'},\
                       {'User-Agent':'Mozilla/5.0 (Windows NT 6.2) AppleWebKit/535.11 (KHTML, like Gecko) Chrome/17.0.963.12 Safari/535.11'},\
                       {'User-Agent': 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Trident/6.0)'}]
-
-
-    
+  
     def catch_data(self):
         while True:
             #requests.adapters.DEFAULT_RETRIES = 5
@@ -51,6 +49,7 @@ class douban(object):
         print(test)
         path = './douban_'+str(ticks[0]).replace(':','-')+'.csv'
         test.to_csv(path,encoding='utf-8-sig',index=False)
+        return path
 
 def main():
     data=douban("https://movie.douban.com/j/search_subjects?type=movie&tag=热门&sort=recommend&page_limit=20&page_start=")
