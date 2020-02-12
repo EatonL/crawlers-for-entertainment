@@ -11,7 +11,7 @@ python spider.py -s "name" -t "time"
 ```
 
 
-**name:** 选用的爬虫名称，目前包括 baidu_img、renren、douban、steam、163music、bilbili、all（all是除了baidu_img的其他所有爬虫）
+**name:** 选用的爬虫名称，目前包括 baidu_img、renren、douban、steam、163music、all（all是除了baidu_img的其他所有爬虫）
 
 **time:** 爬虫的运行周期，单位是小时，默认24小时
 
@@ -19,7 +19,7 @@ python spider.py -s "name" -t "time"
 ~~urlib~~、re、os、~~impolib~~、~~sys~~、argparse、requests、json、time、pandas、beautifulsoup、~~apsheduler~~、schedule
 
 所需环境：
-python3.7, windows（linux系统还未测试，应该不会有什么大问题）
+python3.7
 
 ## 功能介绍
 
@@ -53,12 +53,19 @@ To do:
 - ~~异常时采用代理IP或者cookies（豆瓣会阻止异常IP访问）~~
 - ~~采用类的调用，不使用os.system调用各爬虫~~
 - ~~多User-Agent~~
-- ~~增加哔哩哔哩单日热榜~~
 
-**后记：** 一方面由于入手爬虫时间不长，另一方面一直也是写写停停，到最后才决定汇总，所以问题挺多，包括：各个爬虫风格乱，request 和 urlib 都在用；有的模块封装了，有的模块还没封装；定时功能图省事用了现成模块，感觉更费事，而且不是多线程......导致最后主文件只能用 os.system 调用其他模块，而且调用模块太多，不方便打包，很不 pythonic 。不过万事开头难，后面我会按计划慢慢补上。
+---
+新增功能：
+- 增加哔哩哔哩单日热榜：python spider.py -s bilibili
+- 增加资讯CSV文件邮件发送功能：python spider.py -m Y
+sendEmail(from_addr,to_addr,password/authorization,host,title,content,annex)
+
 
 P.S:后续问题：
 - 没有自己写一个定时功能，因为发现时间好像不太准，所以采用了轻量模块schedule
 - 代码风格统一了，但还是有个异性，暂时没法重复调用同一方法
 - 免费代理IP不稳定，自动获取cookies也有障碍，目前采用多User Agent伪装，随机延迟经测试长时间有效
 - 网易云音乐请求链接有加密，目前只能给出榜单，无法给出每首歌曲的具体链接
+- 具体关于邮件发送问题，详见博客：
+
+
