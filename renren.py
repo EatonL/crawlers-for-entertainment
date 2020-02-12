@@ -64,11 +64,11 @@ class renren(object):
         print(test)
         path = './renren_'+str(ticks[0])+'.csv'
         test.to_csv(path,encoding='utf-8-sig',index=False)
-
+        return path
 
 def main():
     data=renren("http://www.rrys2019.com/")
-    data.extract()
+    filePath=data.extract()
 
 if __name__ == '__main__':
     main()
